@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/plugins/grain_checker" >
+        <file>icon.png</file>
+    </qresource>
+</RCC>
