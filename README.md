@@ -1,12 +1,14 @@
 # Grain_Checker_QGISPlugin
 A lightweight QGIS plugin for MAUP sensitivity stress testing of bivariate point-density relationships
 
-Grain-Checker is a prototype QGIS plugin designed to quickly test whether a spatial relationship is sensitive to aggregation grain (i.e., the Modifiable Areal Unit Problem, MAUP).
+Grain-Checker is a prototype QGIS plugin designed to quickly test whether a spatial relationship is sensitive to aggregation grain.In spatial analysis, conclusions can change when the aggregation unit changes.In practice, many workflows choose one grid size and proceed directly to modeling, without checking whether the observed relationship is stable across scales. Grain-Checker is meant to act as a quick methodological stress test before downstream modeling.
 
-🔴Why this matters
-In spatial analysis, conclusions can change when the aggregation unit changes.In practice, many workflows choose one grid size and proceed directly to modeling, without checking whether the observed relationship is stable across scales.
-
-Grain-Checker is meant to act as a quick methodological stress test before downstream modeling.
+🔴Installation (prototype / local use)
+Copy the plugin folder into your QGIS plugins directory (e.g. on Windows):
+C:\Users\<username>\AppData\Roaming\QGIS\QGIS3\profiles\default\python\plugins\grain_checker
+1)Restart QGIS.
+2)Enable the plugin in Plugins → Manage and Install Plugins.
+3)Run Grain Checker from the toolbar/menu.
 
 🔵What it accepts:
 1)Event point layer 
@@ -35,3 +37,10 @@ a simple grain-sensitivity label (fine/medium/coarse)
   b)counts points in each cell,
   c)computes density–density Pearson correlation for each scale,
   d)reports the grain sensitivity of the relationship.
+
+🔵Notes on input data 
+1) Both layers must be point layers.
+2) If your covariate is a line layer, preprocess it into points.
+3) Very fine grids may produce highly sparse event densities; this can make correlation unstable or less interpretable.
+
+  
