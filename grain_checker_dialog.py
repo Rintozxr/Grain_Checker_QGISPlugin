@@ -22,16 +22,6 @@
  ***************************************************************************/
 """
 
-
-import os
-
-from qgis.PyQt import uic, QtWidgets
-from qgis.PyQt import QtWidgets
-
-from qgis.core import QgsProject, QgsVectorLayer, QgsWkbTypes
-from qgis.PyQt.QtCore import QVariant
-
-# This loads your .ui file so that PyQt can populate your plugin with the elements from Qt Designer
 FORM_CLASS, _ = uic.loadUiType(os.path.join(
     os.path.dirname(__file__), 'grain_checker_dialog_base.ui'))
 
@@ -41,11 +31,10 @@ class grain_checkerDialog(QtWidgets.QDialog, FORM_CLASS):
         super(grain_checkerDialog, self).__init__(parent)
         self.setupUi(self)
 
-        # Combo boxes should be selection-only
+        #限定
         self.comboPointLayer.setEditable(False)
         self.comboCovariateLayer.setEditable(False)
 
-        # Optional: set default scales if not already set in UI
         if not self.lineScale1.text().strip():
             self.lineScale1.setText("50")
         if not self.lineScale2.text().strip():
@@ -55,8 +44,8 @@ class grain_checkerDialog(QtWidgets.QDialog, FORM_CLASS):
 
         self.populate_point_layers()
 
+    #输入
     def populate_point_layers(self):
-        """Populate point vector layers into both event and covariate combo boxes."""
         self.comboPointLayer.clear()
         self.comboCovariateLayer.clear()
 
@@ -72,12 +61,11 @@ class grain_checkerDialog(QtWidgets.QDialog, FORM_CLASS):
             self.comboPointLayer.addItem(layer.name(), layer)
             self.comboCovariateLayer.addItem(layer.name(), layer)
 
-        # If multiple point layers exist, default covariate to second one
+        #默认协变量
         if self.comboCovariateLayer.count() > 1:
             self.comboCovariateLayer.setCurrentIndex(1)
 
     def populate_fields(self):
-        """Populate numeric fields for selected point layer."""
         self.comboValueField.clear()
 
         layer = self.comboPointLayer.currentData()
