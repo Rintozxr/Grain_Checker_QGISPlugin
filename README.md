@@ -5,7 +5,8 @@ A lightweight QGIS plugin for MAUP sensitivity stress testing of bivariate point
 
 Grain-Checker is a prototype QGIS plugin designed to quickly test whether a spatial relationship is sensitive to aggregation grain.In spatial analysis, conclusions can change when the aggregation unit changes.In practice, many workflows choose one grid size and proceed directly to modeling, without checking whether the observed relationship is stable across scales. Grain-Checker is meant to act as a quick methodological stress test before downstream modeling.
 
-🔴Video demo: https://www.youtube.com/watch?v=s5FHzwQrjZk
+*Video demo*
+https://www.youtube.com/watch?v=s5FHzwQrjZk
 
 🔴Installation (prototype / local use)
 Copy the plugin folder into your QGIS plugins directory (e.g. on Windows):
